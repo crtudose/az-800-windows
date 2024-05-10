@@ -51,294 +51,67 @@ And it's going to attach it to the input of another command.
 # get-eventlog -LogName System -Newest 5 | format-list
 So right now this is formatted as a list after the specification
 
-I can also if I hit the up arrow I'm going to pipe it again.
+output redirection
+# get-eventlog -LogName System -Newest 5 | format-list | out-file C:\log.txt
 
-And I'm going to I'm going to say out dash file to C colon slash.
-
-And we'll just say log dot text.
-
-And it's going to dump it to a text file.
-
-So we'll hit enter.
-
-We'll go to our C drive.
-
-Now uh let me pull that up.
-
-And there's the log.
-
-And here it is in a text file.
-
-All right.
-
-So very very simplistic commands there that you can run.
-
-You can change the log if you want like I could I could change it to security if I want or application
-
-or whatever it's going to, it's going to put it in that file.
-
-All right.
-
-So the other thing about PowerShell, sometimes the trick to PowerShell is just figuring out what command
-
-you're looking for that you, you're trying to perform.
-
-Um, so for example, let's say I'm trying to perform a command that's got the word net in it and I
-
-can't remember the command.
-
-So what I can do is I can type git dash command, you can hit enter.
-
-And then from there you're going to see every single commandlet that's in memory right now.
-
-Uh, it's going to list them all out on your screen, which of course is very intimidating.
-
-There's a huge list of commands.
+So the other thing about PowerShell, sometimes the trick to PowerShell is
+just figuring out what command you're looking for that you, you're trying to perform.
+Um, so for example, let's say I'm trying to perform a command that's got 
+the word net in it and I can't remember the command.
+So what I can do is I can type get- command, you can hit enter.
+And then from there you're going to see every single commandlet that's 
+in memory right now.
 
 So let me show you how we can narrow down the command.
-
-So let's say I'm trying to find a command that has the word net net.
-
-Somewhere in the command I can type git command.
-
-Check this out.
-
-Hit space dash noun okay.
-
-And then if I just type the word net, nothing's going to happen okay.
-
-Because there is no command where the noun is just the word net.
-
-Okay.
-
+So let's say I'm trying to find a command that has the word net.
 So what I'm going to do is I'm going to use a wildcard.
 
-If I put a star symbol, an asterisk symbol after the word net, then um, then it would show me every
+# get-command -name *net*
 
-command that, that where the noun starts with the word net.
-
-If I put the asterisk before the word net, it's going to show me every command that ends with the word
-
-net.
-
-If I put the asterisk at the front and the back of the word net, then it's going to show me every command
-
-that has the word net as the noun.
-
-So if I hit enter, there's every command that has the word net somewhere in the nail right there.
-
-Okay.
-
-All right, so let's say that I want to narrow down my search even more that I'm going to I'm going
-
-to add the I'm going to hit the up arrow, hit dash verb.
-
+there's every command that has the word net 
 And we're going to put the word reset in there.
 
-So I'm narrowing it down.
+# get-command -name *net* -verb reset
 
-So I know the verb has the word reset in it.
+So the other thing about, uh, about working with PowerShell is that 
+PowerShell uses these things called modules.
+Modules load more commands in memory.
 
-And the noun has the word net.
+You got to understand that there are hundreds of thousands of commands
 
-And look it there.
+Show the current modules that are stored in in memor:
+# Get-Module
 
-We've now narrowed this down.
+So if I am uh, if I am wanting to run certain commands, I need to have the 
+modules loaded in memory, for example, Active Directory.
 
-And the course again, let's say that the command we were looking for was uh, maybe this command right
-
-here reset uh.
-
-Net adapter.
-
-So I'm just going to right click that and I'm going to go again.
-
-Good old Google.
-
-Go back over to Google.
-
-Paste the command in there.
-
-Hit enter and look at there.
-
-There's a help document.
-
-So it's very important again that if you don't understand how to use a command in PowerShell you you
-
-actually can just go in and do a quick Google search.
-
-Here's examples on how to use the command.
-
-All right.
-
-And again I'm a much bigger fan of doing that than the little get help command that they've got.
-
-Even though that command is nice.
-
-Um, I feel like it's it's better to actually go in and look the help document up on the internet.
-
-Okay.
-
-All right.
-
-So the other thing about, uh, about working with PowerShell is that PowerShell uses these things called
-
-modules.
-
-Okay?
-
-Modules, uh, load more commands in memory.
-
-You got to understand that there are hundreds of thousands of commands out there.
-
-Okay.
-
-And so if we type git dash module all right, you can see that these are the current modules that are
-
-stored in in memory right now okay.
-
-So if I am uh, if I am wanting to run certain commands, I need to have the modules loaded in memory,
-
-for example, Active Directory.
-
-Uh, one of the things you can do, um, once you have Active Directory loaded, is you can have the
-
-Active Directory commands loaded into memory so that you can run those.
-
-Okay.
-
-So you, you can say import.
-
-Module name active directory.
-
-And it's now loading all the Active Directory commands into memory.
-
-Okay.
-
-Um, keep in mind you need to have Active Directory and all that going, but you can load those in memory.
-
-Uh, you can also download commands from the internet as well.
+# import-module -name activedirectory
 
 So Microsoft has this thing called the PowerShell gallery.
-
-Okay.
-
-If I go to PowerShell gallery.com.
-
-You'll see right here.
-
-There's there's lots and lots and lots of commands that are out there.
-
-Okay.
-
-Um, so I could look up a command that I want, like, I'll just think of something off the top of my
-
-head.
-
-Uh, how about autopilot?
-
-So there's a cloud technology called autopilot.
-
-I'm not getting into it right now, but if I do a search on autopilot, here is a script for, uh,
-
-dealing with autopilot.
-
-It's going to grab something called the device information off a machine, the hardware ID of your computer.
-
-So it can be used with this thing called autopilot.
-
-So if I wanted this command, um, from the PowerShell gallery, I can click on it, and I can run this
-
-command right here, copy it, install dash script.
-
-All right.
-
-So if I do that.
-
-Let's just paste that in install script name, get Windows Autopilot.
-
-You got to make sure you have an internet connection in order to do this.
-
-If you don't have an internet connection, this is not going to work, but it's going to tell you okay.
+We can install scripts:
+# install-script -name get-windowsautopilotinfo
+It's going to grab something called the device information off a machine, 
+the hardware ID of your computer.
 
 So to download scripts it's going to create a path variable.
-
 The path variable is going to be the place where scripts are stored.
-
-Are you sure you want to do this.
-
-Yes.
-
-All right.
-
-So it's going to go ahead and create that that location on your hard drive to store scripts so that
-
-it can run scripts.
-
-All right.
-
+So it's going to go ahead and create that that location on your hard drive 
+to store scripts so that it can run scripts.
 Um, so from there it's going to ask you if you want to install NuGet.
 
-NuGet is the software that's going to let you download scripts from the internet.
-
-So we're just going to go ahead and say yes to that.
-
-All right.
-
-So it's going to go ahead and install NuGet.
-
-All right.
-
-And then the next thing is um it's going to ask me if uh, if I'm sure I want to install the script
-
-because it's going to be downloaded from an untrusted source.
-
+NuGet is the software that's going to let you download scripts from the 
+internet. So we're just going to go ahead and say yes to that.
 The PowerShell gallery is an untrusted repository.
-
 Oddly enough, Microsoft owns the repository, but it's an untrusted repository.
-
 And the reason it's an untrusted repository is because it's a community repository.
+It's not just, just Microsoft people that that upload scripts there.
 
-It's not just, um, just Microsoft people that that upload scripts there.
-
-Um, the community, other people can upload scripts as well, although they do have good moderators
-
-that generally make sure there's nothing bad that gets uploaded.
-
-So I'm going to go ahead and say yes to that and hit enter.
-
-And at that point, um, that's it.
+the community, other people can upload scripts as well, although 
+they do have good moderators that generally make sure there's nothing bad 
+that gets uploaded.
 
 The script should be available.
+I should be able to say 
+# get-windowsautopilotinfo.ps1
 
-I should be able to say git dash, um, windows Autopilot info dot PS1 and there you go.
 
-There's the script.
-
-Uh, I'm not going to try to run that script.
-
-I'm not really explaining what that script does right now.
-
-I just wanted to demonstrate how to download scripts off the internet.
-
-Okay.
-
-The PS1 is a script file.
-
-That's what that extension is.
-
-Okay.
-
-All right.
-
-Okay.
-
-So now hopefully you have, um, you understand some fundamentals of how to use PowerShell.
-
-Uh, this is just the basics of PowerShell.
-
-And, um, and there's, there's other concepts to look into as well, like, uh, communicating with
-
-the network and the ECC.
-
-But these are just the fundamentals of PowerShell.
