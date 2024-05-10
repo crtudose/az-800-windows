@@ -28,208 +28,28 @@ than the source machine.
 But notice that that service is running right now.
 So let's say I wanted to stop the service right now.
 
-# stop-service winrm
+# stop-service -Name "winrm"
 
-I'm going to use a command called 
+I'm going to use a command called to get more info about the command
 Get-help stop-service
-
-And I'm going to hit enter.
-
-And it's going to give me some help information that I can look at on how to.
-
-To use the command.
-
-Now, to be honest with you, I'm not a big fan of the the help documentation within PowerShell.
-
-I prefer to just do a search on the the help.
-
-Uh, one thing you can do some commands will let you do a dash online and it'll it'll pop the the website
-
-up.
-
-But not all commands support that.
-
-Um, what I'm going to do is I'm going to go to Google.
-
-And I'm going to type stop dash service from there.
-
-There's like 99% of the time there is a, um, there is a manual document that Microsoft has set up
-
-on their website.
-
-All you got to do is just do a quick Google search and you can find it.
-
-There it is right there.
-
-Stop dash service.
-
-So I'm going to click on that and it's going to give me information.
-
-It's going to tell me each one of the parameters.
-
-It's also going to give me examples which I really really like okay.
-
-Now I will also tell you that in some cases with PowerShell you can type dash examples and they'll have
-
-some examples built in.
-
-Not all commands have examples though okay.
-
-So just be aware of that.
-
-They they do on the help documents that are on Microsoft's website.
-
-So I'm a huge fan of using their help documentation.
-
-Guys.
-
-You can always if you don't understand how to use a command, you can just about always do a search.
-
-Find the help document and it'll give you examples on how to use it.
-
-So if I want to stop the Winterim service, there's an example of how I can do that.
-
-I'm going to copy that.
-
-And then I'm going to come into PowerShell and I'll check this out.
-
-All I got to do is just right click the window and it's going to type it in for me.
-
-All right.
-
-And then I'm just going to change the service name.
-
-All right Winrm.
 
 And just like that the Winterim service now should be stopped.
 
-You don't get like a congratulatory message or anything.
+# start-service -Name "winrm"
 
-If a lot of times with PowerShell if no, I should say no news is good news if you don't get an error.
+see the processes running on windows
+# get-process 
 
-It worked.
+If I wanted to see what the 5 newest event logs are doing in windows  
+# get-eventlog -LogName System -Newest 5
 
-So now we're going to do get service.
-
-And by the way, you can hit the up arrow on your keyboard and cycle back through your previous commands.
-
-So there it is.
-
-Get service.
-
-And you'll notice that when our M is stopped.
-
-Which also means that if I wanted to start it back up, it's probably going to be the same thing, right?
-
-Start dash service right then dash.
-
-Now get this.
-
-IntelliSense also supports the parameters as well.
-
-So I can toggle through the parameters just like that hitting tab, which is really great being able
-
-to do that.
-
-All right.
-
-So the dash name is the one I want I'm going to say win or M.
-
-And then at that point it should be started up.
-
-And it is.
-
-Okay, so we're in good shape.
-
-All right.
-
-Um, so there's lots and lots and lots of commands in PowerShell.
-
-Like, I could type get process.
-
-I could see the processes that are running.
-
-All right.
-
-If I wanted to see what the event logs are doing in windows right now, I could type git dash event
-
-log, hit enter.
-
-Oh, no.
-
-There's there's some parameters that I need.
-
-Well, again, all I got to do is just go to Google.
-
-Right.
-
-Type the command in there git event log hit enter.
-
-There's the command.
-
-All right.
-
-Here's the help document that it's pulling up I can scroll down and I can see examples on how to use
-
-the command.
-
-All right.
-
-So in my case I'm going to do something like this git event log uh log name system okay newest.
-
-So if I do that let's just hit enter get event log log name the system log and then show me the newest
-
-five results.
-
-There we go.
-
-There's the newest five results.
-
-Now what are we looking at.
-
-Well if we right click start here we can open up the event viewer in uh on our server.
-
-We can expand the windows Logs and then click system.
-
-These are the logs that we're talking about here okay.
-
-Um, of course, it'll take a moment to load these up because there's a bunch of log entries, but once
-
-that loads up, you'll you'll see those.
-
-Um, now, another thing you'll notice is that it it kind of, um, uh, minimizes the information.
-
-You don't see it all expanded out.
-
-So what I can do is I can change the formatting with PowerShell, I can use what's known as the pipe
-
-command, which is that little, uh, um, character right there.
-
-It's the character above the enter key.
-
-If you hold down shift.
-
-Right.
-
+So what I can do is I can change the formatting with PowerShell, 
+I can use what's known as the pipe command.
 And so piping is going to take the the output from one command.
-
 And it's going to attach it to the input of another command.
 
-So there's actually a nice little command called format dash list.
-
-So right now this is formatted as a table.
-
-And I can say format this as a list.
-
-And it's going to format it as a list.
-
-I can hit enter and it's now going to format it as a list.
-
-So now it's going to expand it all out.
-
-All right.
-
-Now check this out.
+# get-eventlog -LogName System -Newest 5 | format-list
+So right now this is formatted as a list after the specification
 
 I can also if I hit the up arrow I'm going to pipe it again.
 
