@@ -111,7 +111,50 @@ they do have good moderators that generally make sure there's nothing bad
 that gets uploaded.
 
 The script should be available.
-I should be able to say 
 # get-windowsautopilotinfo.ps1
+===================================================================
+Domains, trees and forests
+-------------------------
+every single Active Directory domain must be part of a forest.
+There is no way possible for a domain to not be part of a domain, to not be part of a forest.
 
+a group of domains make up a tree, and then a group of trees to make a forest
+With this this single triangle here, single triangle is going to represent, uh, my exam lab practice
+The company is just starting up, it's a single domain.
+So the question now would be why would you move into having multiple domains.
 
+Uh, one reason would be um, administrative purposes because your company is spread out through large
+amounts of geographical locations.
+For example, my exam lab practice comm, part of my company might be based in the United States.
+Maybe that's where the company got started and the company is expanding and growing.
+
+But when you do that, when it becomes what's known as a child domain, because it's going to be underneath
+this exam lab practice name, it's going to be called UK dot exam lab practice.com.
+
+They'll have these lines here that are going to represent what are known as trust relationships.
+Trust relationships allow our domains to share resources together.
+These domains here can all exchange and share resources.
+
+We have domain admins, exam lab practice com that can only control exam lab practice com although we
+can have what are called enterprise administrators that can control the whole thing okay.
+Child domains can even have other child domains.
+
+The schema is part of the Active Directory database that makes up all of the different objects, all
+the different attributes.
+These are the object templates and attributes and all of that.
+But basically this involves the actual database itself.
+
+Now the other thing that that, uh, domains that are part of the same forest will share is they'll
+share this thing called the global catalog.
+The global catalog is a part of the Active Directory database that if you're part of the same forest,
+you share all the global catalog.
+And this is part of what allows domains to search for objects in different domains.
+
+So for example, if if I'm in Scotland and I'm trying to look up somebody's user information over in
+Australia, I could do that, especially if I needed their contact information or something
+like that, because of this thing called the global catalog that shared across the entire forest.
+
+The very first domain in the forest is called the root of the forest.
+This is where your enterprise admins are usually created.
+Enterprise admins have control over the entire forest or as domain admins.
+Our user accounts that only have admin rights over just their individual domains.
