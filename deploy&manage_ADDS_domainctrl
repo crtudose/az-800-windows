@@ -169,7 +169,6 @@ The syntax for transferring a role and seizing a role is similar within Windows 
 Move-ADDirectoryServerOperationsMasterRole -Identity "<servername>" -OperationsMasterRole "<rolenamelist>" -Force
 
 The main steps in the process are:
-
 Create AD DS environment. Create a single domain AD DS forest containing two domain controllers.
 Check the placement of operations master roles. Identify which of the two domain controllers hosts the operations master roles.
 Transfer operations master roles between domain controllers by using the GUI tools. Use the GUI tools to transfer the operations masters roles from the domain controller you identified in the previous step to the other one.
@@ -199,3 +198,22 @@ Get-ADReplicationSite. Provides a specific AD DS replication site or a set of re
 Get-ADReplicationSiteLink. Provides a specific Active Directory site link or a set of site links based on a specified filter
 Get-ADReplicationSiteLinkBridge. Provides a specific Active Directory site link bridge or a set of site link bridge objects based on a specified filter
 Get-ADReplicationSubnet. Provides an Active Directory subnet or a set of Active Directory subnets based on a specified filter.
+
+The following video demonstrates how to create a custom AD DS partition. The main steps in the process are:
+
+Create AD DS environment. Create a single-domain AD DS forest containing two domain controllers.
+Create a custom AD DS partition. Use command-line tools to create a custom application partition.
+Verify that a custom AD DS partition exists. Use command-line tools to verify existence of a custom application partition.
+Delete a custom AD DS partition. Use command-line tools to delete a custom application partition.
+
+> ntdsutil
+ntdsutil.exe: ac in ntds
+ntdsutil.exe: partition management
+partition management: connections
+server connections: connect to server X
+Binding to X
+server connections: quit
+partition management: list
+partition management: create nc dc=AppPartition,dc=contoso,dc=com sea-dc1.contoso.com
+partition management: list
+partition management: delete nc dc=AppPartition,dc=contoso,dc=com
